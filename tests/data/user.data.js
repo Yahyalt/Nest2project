@@ -1,9 +1,6 @@
-export const VALID_REGISTER = {
-        "email": "eve.holt@reqres.in",
-        "password": "pistol"
+export const CREATE_TOKEN = {
+        "username": "admin",
+        "password": "password"
 }
 
-export const VALID_UPDATE = {
-        "name": "morpheus",
-        "job": "zion resident"
-    }
+
