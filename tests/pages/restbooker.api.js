@@ -1,4 +1,4 @@
-import BaseAPI from '../pages/restbooker.api.js';
+import BaseAPI from '../pages/base.api.js';
 
 const RestbookerAPI = {
     createToken: (data) => BaseAPI.post('/auth', data),
