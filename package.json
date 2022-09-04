@@ -9,7 +9,12 @@
   "dependencies": {
     "axios": "^0.27.2",
     "chai": "^4.3.6",
+<<<<<<< HEAD
+    "chai-json-schema": "^1.5.1",
+    "dotenv": "^16.0.2",
+=======
     "dotenv": "^16.0.1",
+>>>>>>> c3071d14f9b749102846dbb4d64572da47d1c224
     "link-module-alias": "^1.2.0",
     "mocha": "^10.0.0",
     "mochawesome": "^7.1.3"
