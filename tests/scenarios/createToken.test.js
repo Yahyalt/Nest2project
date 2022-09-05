@@ -3,7 +3,7 @@ import RestbookerAPI from '../pages/restbooker.api.js';
 import * as data from '../data/user.data.js';
 
 describe('Verify user can create token', () => {
-    it.('Verify user input valid username and valid password', async () => {
+    it('Verify user input valid username and valid password', async () => {
         const response = await RestbookerAPI.createToken(data.CREATE_TOKEN_A);
 //chai utk assertion
         assert.equal(response.status, 200);
