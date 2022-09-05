@@ -1,8 +1,8 @@
 {
-  "name": "apinest",
-  "version": "1.0.0",
-  "description": "API AUTOMATION USING MOCHA & CHAI",
-  "main": "index.js",
+  "name": "create-partial",
+  "version": "1.0",
+  "description": "create-partial",
+  "main": "https://restful-booker.herokuapp.com",
   "author": "Yahya",
   "license": "MIT",
   "type": "module",
@@ -23,5 +23,6 @@
   "_moduleAliases": {
     "$root": "tests",
     "$helper": "tests/helper"
-  }
+  },
+  "repository": "https://github.com/yahyhfidz97/Nest2project.git"
 }
