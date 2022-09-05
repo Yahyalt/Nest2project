@@ -7,18 +7,22 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "add": "^2.0.6",
     "axios": "^0.27.2",
     "chai": "^4.3.6",
     "chai-json-schema": "^1.5.1",
     "dotenv": "^16.0.2",
     "link-module-alias": "^1.2.0",
     "mocha": "^10.0.0",
-    "mochawesome": "^7.1.3"
+    "mochawesome": "^7.1.3",
+    "supertest": "^6.2.4",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "postinstall": "link-module-alias",
     "preinstall": "link-module-alias && link-module-alias clean || true",
-    "mocha:test": "mocha tests/scenarios --reporter-options reportDir=reports"
+    "test": "mocha tests/scenarios --reporter-options reportDir=reports",
+    "test:error": "echo \"Error: no test specified\" && exit 1"
   },
   "_moduleAliases": {
     "$root": "tests",
@@ -26,3 +30,4 @@
   },
   "repository": "https://github.com/yahyhfidz97/Nest2project.git"
 }
+
