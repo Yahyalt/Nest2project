@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import RestbookerAPI from '../pages/restbooker.api.js';
-import * as data from '../data/user.data.js';
+import RestbookerAPI from '../pages/restbooker.api';
+import * as data from '../data/user.data';
 
 describe('Verify user can create token', () => {
     it('Verify user input valid username and valid password', async () => {
