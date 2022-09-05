@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-
 import RestbookerAPI from '../pages/restbooker.api.js';
 import * as data from '../data/user.data.js';
 
@@ -32,5 +31,6 @@ describe('Verify user can create token', () => {
         const response = await RestbookerAPI.createToken(data.CREATE_TOKEN_E);
         assert.isString(response.data.reason, "Bad Credential");
     });
+
 
 });
