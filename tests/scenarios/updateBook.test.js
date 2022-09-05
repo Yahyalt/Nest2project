@@ -1,27 +1,101 @@
-import { assert } from 'chai';
-import RestbookerAPI from '../pages/restbooker.api';
-import * as data from '../data/user.data.js';
-import BaseAPI from '../pages/base.api';
+const request = require('supertest');
+const expect = require('chai').expect;
+const booking = require('../testdata/booking.json');
+const userauthdata = require('../testdata/userauthdata.json');
+const updatedbooking = require('../testdata/updatedbooking.json');
 
-describe('As a guest, I want to update user data using PUT Method', () => {
-    it('should receive a status code of 200 with login', function(done) {
-        request(BaseAPI)
-            .get('/auth')
-            .auth('admin', 'password123')
-            .expect(200, done);
+describe('Restful Booker API Tests', () => {
+    const baseurl = 'https://restful-booker.herokuapp.com';
+    var bookingId;
+    var token;
+
+    before(function(done) {
+        request(baseurl)
+            .post('/auth')
+            .send(userauthdata)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .end(function(err, res) {
+                expect(res.statusCode).to.be.equal(200);
+                expect(res.body.token).not.to.be.null;
+                token = res.body.token;
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
     });
-    it('Should be succesfully update user data', async () => {
-        const response = await RestbookerAPI.updateput(data.UPDATE_PUT);
 
-        assert.equal(response.status, 200);
-        assert.containsAllKeys(response.data, ["firstname", "lastname", "totalprice","depositpaid", "bookingdates", "checkin", "checkout", "additionalneeds" ]),
-        assert.isString(response.data.lastname);
-        assert.isNumber(response.data.totalprice);
-        assert.isBoolean(response.data.depositpaid);
-        assert.isObject(response.data.bookingdates);
-        assert.isString(response.data.checkin);
-        assert.isString(response.data.checkout);
-        assert.isString(response.data.additionalneeds);
 
+    it('should successfully create a booking', (done) => {
+        request(baseurl)
+            .post('/booking')
+            .send(booking)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .end(function(err, res) {
+                expect(res.statusCode).to.be.equal(200);
+                expect(res.body.bookingid).not.to.be.null;
+                expect(res.body.booking.firstname).to.be.equal(booking.firstname);
+                expect(res.body.booking.lastname).to.be.equal(booking.lastname);
+                expect(res.body.booking.totalprice).to.be.equal(booking.totalprice);
+                expect(res.body.booking.depositpaid).to.be.equal(booking.depositpaid);
+                expect(res.body.booking.bookingdates.checkin).to.be.equal(booking.bookingdates.checkin);
+                expect(res.body.booking.bookingdates.checkout).to.be.equal(booking.bookingdates.checkout);
+                expect(res.body.booking.additionalneeds).to.be.equal(booking.additionalneeds);
+                bookingId = res.body.bookingid;
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
     });
+
+    it('should fetch the booking of the provided booking id', (done) => {
+        request(baseurl)
+            .get('/booking/' + bookingId)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .end(function(err, res) {
+                expect(res.statusCode).to.be.equal(200);
+                expect(res.body.firstname).to.be.equal(booking.firstname);
+                expect(res.body.lastname).to.be.equal(booking.lastname);
+                expect(res.body.totalprice).to.be.equal(booking.totalprice);
+                expect(res.body.depositpaid).to.be.equal(booking.depositpaid);
+                expect(res.body.bookingdates.checkin).to.be.equal(booking.bookingdates.checkin);
+                expect(res.body.bookingdates.checkout).to.be.equal(booking.bookingdates.checkout);
+                expect(res.body.additionalneeds).to.be.equal(booking.additionalneeds);
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
+    });
+
+    it('should update the booking of the provided booking id using Put request', (done) => {
+        request(baseurl)
+            .put('/booking/' + bookingId)
+            .send(updatedbooking)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .set('Cookie', 'token=' + token)
+            .end(function(err, res) {
+                expect(res.statusCode).to.be.equal(200);
+                expect(res.body.firstname).to.be.equal(updatedbooking.firstname);
+                expect(res.body.lastname).to.be.equal(updatedbooking.lastname);
+                expect(res.body.totalprice).to.be.equal(updatedbooking.totalprice);
+                expect(res.body.depositpaid).to.be.equal(updatedbooking.depositpaid);
+                expect(res.body.bookingdates.checkin).to.be.equal(updatedbooking.bookingdates.checkin);
+                expect(res.body.bookingdates.checkout).to.be.equal(updatedbooking.bookingdates.checkout);
+                expect(res.body.additionalneeds).to.be.equal(updatedbooking.additionalneeds);
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
+    });
+
+
+    
+    
 });
