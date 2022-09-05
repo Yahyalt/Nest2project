@@ -1,27 +1,31 @@
 import { assert } from 'chai';
-import RestbookerAPI from '../pages/restbooker.api';
-import * as data from '../data/user.data.js';
-import BaseAPI from '../pages/base.api';
+import RestbookerAPI from '../pages/restbooker.api.js';
+import * as data from '../data/updatedbooking.js';
+import BaseAPI from '../pages/base.api'
 
-describe('As a guest, I want to update user data using PUT Method', () => {
-    it('should receive a status code of 200 with login', function(done) {
-        request(BaseAPI)
-            .get('/auth')
-            .auth('admin', 'password123')
-            .expect(200, done);
-    });
+describe('As a guest, I want to update user data (using PUT method)', () => {
     it('Should be succesfully update user data', async () => {
-        const response = await RestbookerAPI.updateput(data.UPDATE_PUT);
-
-        assert.equal(response.status, 200);
-        assert.containsAllKeys(response.data, ["firstname", "lastname", "totalprice","depositpaid", "bookingdates", "checkin", "checkout", "additionalneeds" ]),
-        assert.isString(response.data.lastname);
-        assert.isNumber(response.data.totalprice);
-        assert.isBoolean(response.data.depositpaid);
-        assert.isObject(response.data.bookingdates);
-        assert.isString(response.data.checkin);
-        assert.isString(response.data.checkout);
-        assert.isString(response.data.additionalneeds);
-
+        const response = await RestbookerAPI.updatePut(data.UPDATE_PUT);
+        request (BaseAPI)
+            .put('/booking/5' )
+            .send(data)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .set('Cookie', 'token=' )
+            .end(function(err,) {
+                assert(response.data.firstname).to.be.equal(updatedbooking.firstname);
+                assert(response.data.lastname).to.be.equal(updatedbooking.lastname);
+                assert(response.data.totalprice).to.be.equal(updatedbooking.totalprice);
+                assert(response.data.depositpaid).to.be.equal(updatedbooking.depositpaid);
+                assert(response.data.bookingdates.checkin).to.be.equal(updatedbooking.bookingdates.checkin);
+                assert(response.data.bookingdates.checkout).to.be.equal(updatedbooking.bookingdates.checkout);
+                assert(response.data.additionalneeds).to.be.equal(updatedbooking.additionalneeds);
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
     });
+
+   
 });
