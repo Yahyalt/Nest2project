@@ -21,8 +21,7 @@
   "scripts": {
     "postinstall": "link-module-alias",
     "preinstall": "link-module-alias && link-module-alias clean || true",
-    "test": "mocha tests/scenarios --reporter-options reportDir=reports",
-    "test:error": "echo \"Error: no test specified\" && exit 1"
+    "mocha:test": "mocha tests/scenarios --reporter-options reportDir=reports"
   },
   "_moduleAliases": {
     "$root": "tests",

@@ -7,7 +7,8 @@ const RestbookerAPI = {
     getToken: (data) => BaseAPI.post('/auth', data),
     getAllbookingIds: (data) => BaseAPI.get('/booking', data),
     createBookingids: (data) => BaseAPI.post('/booking', data),
-    getAllbookingFilterByname: () => BaseAPI.get('/booking?firstname=Yahya&lastname=Hafidz')
+    getAllbookingFilterByname: () => BaseAPI.get('/booking?firstname=Yahya&lastname=Hafidz'),
+    getBookingbyID: (data) => BaseAPI.get('/booking/6516', data)
 
 };
 
