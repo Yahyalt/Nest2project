@@ -4,6 +4,7 @@ import * as data from '../data/user.data';
 
 describe('Verify User Can Create Field', () => {
     it('Verify User Can Add Booking Data', async () => {
+   
     const response = await RestbookerAPI.createBookingids(data.CREATE_BOOKING_ID);
     //chai utk assertion
     assert.equal(response.status, 200);
