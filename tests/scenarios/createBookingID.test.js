@@ -8,17 +8,16 @@ describe('Verify User Can Create Field', () => {
     const response = await RestbookerAPI.createBookingids(data.CREATE_BOOKING_ID);
     //chai utk assertion
     assert.equal(response.status, 200);
-    assert.containsAllKeys(response.data, ["bookingid", "booking", "firstname", "lastname", "totalprice", "depositpaid", "bookingdates", "checkin", "checkout", "additionalneeds"]);
-    assert.isNumber(response.data.bookingid);
-    assert.isObject(response.data.booking);
-    assert.isString(response.data.firstname);
-    assert.isString(response.data.lastname);
-    assert.isNumber(response.data.totalprice);
-    assert.isBoolean(response.data.depositpaid);
-    assert.isObject(response.data.bookingdates);
-    assert.toString(response.data.checkin);
-    assert.toString(response.data.checkout);
-    assert.isString(response.data.additionalneeds);
-
+    assert.containsAllKeys(response.data, ["bookingid", "firstname", "lastname", "totalprice", "depositpaid", "bookingdates", "checkin", "checkout", "additionalneeds"]);
+    assert.isNumber(response.data.bookingid).not.to.be.null;;
+    assert.isString(response.data.booking.firstname).to.be.equal(booking.firstname);
+    assert.isString(response.data.booking.lastname).to.be.equal(booking.lastname);
+    assert.isNumber(response.data.booking.totalprice).to.be.equal(booking.totalprice);
+    assert.isBoolean(response.data.booking.depositpaid).to.be.equal(booking.depositpaid);
+    assert.isObject(response.data.booking.bookingdates).to.be.equal(booking.bookingdates);
+    assert.deepStrictEqual(response.data.bookingdates.checkin).to.be.equal(bookingdates.checkin);
+    assert.deepStrictEqual(response.data.bookingdates.checkout).to.be.equal(bookingdates.checkout);
+    assert.isString(response.data.booking.additionalneeds).to.be.equal(booking.additionalneeds);
+    
     })
 });

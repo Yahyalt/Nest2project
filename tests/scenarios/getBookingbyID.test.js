@@ -7,8 +7,6 @@ describe('As a User, I want list of user', () =>{
     
         assert.equal(response.status, 200);
         assert.containsAllKeys(response.data, ["additionalneeds", "bookingdates", "depositpaid", "firstname", "lastname", "totalprice"]);
-        
-        
         assert.isString(response.data.firstname);
         assert.isString(response.data.lastname);
         assert.isNumber(response.data.totalprice);
