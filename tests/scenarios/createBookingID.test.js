@@ -15,9 +15,9 @@ describe('Verify User Can Create Field', () => {
     assert.isNumber(response.data.booking.totalprice).to.be.equal(booking.totalprice);
     assert.isBoolean(response.data.booking.depositpaid).to.be.equal(booking.depositpaid);
     assert.isObject(response.data.booking.bookingdates).to.be.equal(booking.bookingdates);
-    assert.deepStrictEqual(response.data.bookingdates.checkin).to.be.equal(bookingdates.checkin);
-    assert.deepStrictEqual(response.data.bookingdates.checkout).to.be.equal(bookingdates.checkout);
+    assert.isString(response.data.bookingdates.checkin).to.be.equal(bookingdates.checkin);
+    assert.isString(response.data.bookingdates.checkout).to.be.equal(bookingdates.checkout);
     assert.isString(response.data.booking.additionalneeds).to.be.equal(booking.additionalneeds);
-    
+
     })
 });
