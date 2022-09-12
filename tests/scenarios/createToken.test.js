@@ -5,7 +5,6 @@ import * as data from '../data/user.data';
 describe('Verify user can create token', () => {
     it('Verify user input valid username and valid password', async () => {
         const response = await RestbookerAPI.createToken(data.CREATE_TOKEN_A);
-    //chai utk assertion
         assert.equal(response.status, 200);
         assert.containsAllKeys(response.data, ["token"]);
         assert.isString(response.data.token);

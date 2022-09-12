@@ -2,7 +2,7 @@ import { assert } from "chai";
 import RestbookerAPI from "../pages/restbooker.api";
 
 describe('As a User, I want list of user', () =>{
-    it('should successfully see list of user', async () => {
+    it.only('should successfully see list of user', async () => {
         const response = await RestbookerAPI.getAllbookingFilterByname();
     
         assert.equal(response.status, 200);
