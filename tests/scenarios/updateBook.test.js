@@ -5,7 +5,7 @@ import BaseAPI from '../pages/base.api'
 import request from 'supertest';
 
 
-describe.only('As a guest, I want to update user data (using PUT method)', () => {
+describe('As a guest, I want to update user data (using PUT method)', () => {
     it('Should be succesfully update user data', async () => {
     
  
