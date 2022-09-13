@@ -29,7 +29,21 @@ export const CREATE_TOKEN_F = {
         "password": "password123"
 }
 
+<<<<<<< HEAD
 
+=======
+export const CREATE_BOOKING_ID = {
+    "firstname" : "Yahya",
+    "lastname" : "Hafidz",
+    "totalprice" : 2253,
+    "depositpaid" : true,
+    "bookingdates" : {
+        "checkin" : "2018-01-01",
+        "checkout" : "2019-01-01"
+    },
+    "additionalneeds" : "Breakfast"
+}
+>>>>>>> 258bda64ed932fed349ce70ab5e8157bd91a5543
 
 
 
