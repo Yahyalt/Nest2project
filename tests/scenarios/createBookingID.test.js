@@ -7,6 +7,7 @@ import request from 'supertest';
 describe('Verify user can create booking', () => {
     it('Should be succesfully create booking id', async () => {
         const response = await RestbookerAPI.createBookingids(data.CREATE_BOOKING_ID);
+        console.log(response.data)
         request(BaseAPI)
             .post('/booking' )
             .send(data.CREATE_BOOKING_ID)
