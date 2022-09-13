@@ -25,6 +25,9 @@
     "$root": "tests",
     "$helper": "tests/helper"
   },
-  "repository": "https://github.com/yahyhfidz97/Nest2project.git"
+  "repository": "https://github.com/yahyhfidz97/Nest2project.git",
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "supertest": "^6.2.4"
+  }
 }
-
