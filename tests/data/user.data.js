@@ -30,9 +30,9 @@ export const CREATE_TOKEN_F = {
 }
 
 export const CREATE_BOOKING_ID = {
-    "firstname" : "Jim",
-    "lastname" : "Brown",
-    "totalprice" : 111,
+    "firstname" : "Yahya",
+    "lastname" : "Hafidz",
+    "totalprice" : 2253,
     "depositpaid" : true,
     "bookingdates" : {
         "checkin" : "2018-01-01",

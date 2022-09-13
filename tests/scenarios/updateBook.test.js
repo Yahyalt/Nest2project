@@ -10,6 +10,7 @@ describe('As a guest, I want to update user data (using PUT method)', () => {
     
  
         const response = await RestbookerAPI.updatePut(data.UPDATE_PUT);
+        console.log(response.data)
         request(BaseAPI)
             .put('/booking/7' )
             .send(data)
