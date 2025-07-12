@@ -153,17 +153,4 @@ This project welcomes contributions from all team members. Please follow these g
 4. **Push to branch**: `git push origin feature/new-test-case`
 5. **Create Pull Request**
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🚀 Future Enhancements
-
-- [ ] Add more comprehensive error handling tests
-- [ ] Implement parallel test execution
-- [ ] Add performance testing scenarios
-- [ ] Integrate with CI/CD pipeline
-- [ ] Add API response time assertions
-- [ ] Implement data-driven testing
-
 **Note**: This project demonstrates collaborative software development practices and comprehensive API testing methodologies. It serves as a learning resource for API testing automation using modern JavaScript testing frameworks.
